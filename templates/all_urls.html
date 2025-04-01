@@ -1,8 +1,30 @@
-{% extends "base.html" %}
-{% block title %}View all URLS{% endblock %}
-
-{% block content %}
-    {% for url in vals %}
-        <p><strong>Short:</strong>{{url.short}} <strong>Long:</strong> {{url.long}}</p>
-    {% endfor %}
+<!-- all_urls.html -->
+{% extends "base.html" %} {% block title %}View all URLs{% endblock %} {% block
+content %}
+<h2 class="mb-4">All URLs</h2>
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th>Short URL</th>
+				<th>Original URL</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for url in vals %}
+			<tr>
+				<td>
+					<a href="http://127.0.0.1:5000/{{ url.short }}" class="text-primary">
+						/{{ url.short }}
+					</a>
+				</td>
+				<td class="text-truncate" style="max-width: 300px">{{ url.long }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<a href="/" class="btn btn-primary back-button">
+	<i class="fas fa-arrow-left"></i> Back to Home
+</a>
 {% endblock %}

@@ -9,7 +9,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)  # Fix: Direct initialization
 
-
 class Urls(db.Model):
     id_ = db.Column(db.Integer, primary_key=True)
     long = db.Column(db.String(), nullable=False)  # Fix: Ensure URL is not NULL

@@ -1,0 +1,63 @@
+/* Enhanced CSS */
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 15px rgba(0,0,0,.1);
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.input-group-text {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.input-group-text:hover {
+    background-color: #e9ecef;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,123,255,.05);
+}
+
+.text-truncate {
+    max-width: 400px;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.back-button {
+    margin-top: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .form-control-lg {
+        font-size: 1rem;
+    }
+    
+    .text-truncate {
+        max-width: 150px;
+    }
+}

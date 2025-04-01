@@ -1,7 +1,30 @@
+<!-- shorturl.html -->
 {% extends "base.html" %}
 {% block title %}Short URL{% endblock %}
 
 {% block content %}
-    <a href="http://127.0.0.1:5000/{{short_url_display}}"><h1>http://127.0.0.1:5000/{{short_url_display}}</h1></a>
-    <a href="http://127.0.0.1:5000">BACK TO HOME</a>
+    <div class="text-center">
+        <h2 class="mb-4">Your Short URL</h2>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control form-control-lg" 
+                   value="http://127.0.0.1:5000/{{ short_url_display }}" 
+                   id="shortUrl" readonly>
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" onclick="copyUrl()">
+                    <i class="far fa-copy"></i>
+                </button>
+            </div>
+        </div>
+        <a href="/" class="btn btn-primary mt-3">
+            <i class="fas fa-home"></i> Back to Home
+        </a>
+    </div>
+
+    <script>
+    function copyUrl() {
+        const copyText = document.getElementById("shortUrl");
+        copyText.select();
+        document.execCommand("copy");
+    }
+    </script>
 {% endblock %}
