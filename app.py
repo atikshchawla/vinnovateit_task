@@ -7,22 +7,21 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///url.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)  # Fix: Direct initialization
+db = SQLAlchemy(app)
 
 class Urls(db.Model):
     id_ = db.Column(db.Integer, primary_key=True)
-    long = db.Column(db.String(), nullable=False)  # Fix: Ensure URL is not NULL
-    short = db.Column(db.String(10), unique=True, nullable=False)  # Fix: Unique short URLs
+    long = db.Column(db.String(), nullable=False)
+    short = db.Column(db.String(10), unique=True, nullable=False)
 
     def __init__(self, long, short):
         self.long = long
         self.short = short
 
-
 def shorten_url():
-    letters = string.ascii_letters  # Fix: Combined uppercase & lowercase
+    letters = string.ascii_letters
     while True:
-        rand_letters = ''.join(random.choices(letters, k=3))  # Fix: Join directly
+        rand_letters = ''.join(random.choices(letters, k=3))
         if not Urls.query.filter_by(short=rand_letters).first():
             return rand_letters
 
@@ -50,7 +49,7 @@ def redirection(short_url):
     if long_url:
         return redirect(long_url.long)
     else:
-        return '<h1>URL does not exist</h1>', 404  # Fix: Return HTTP 404 status
+        return '<h1>URL does not exist</h1>', 404
 
 
 @app.route('/display/<url>')
@@ -64,6 +63,6 @@ def display_all():
 
 
 if __name__ == '__main__':
-    with app.app_context():  # Fix: Ensure DB tables are created properly
+    with app.app_context():
         db.create_all()
-    app.run(port=5000, debug=True)
+    app.run(port=5000)
